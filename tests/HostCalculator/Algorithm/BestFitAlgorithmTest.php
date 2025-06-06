@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Tests\HostCalculator\Algorithm;
 
 use App\HostCalculator\Host;
@@ -50,13 +52,13 @@ class BestFitAlgorithmTest extends TestCase
 
         $algorithm = new BestFitAlgorithm();
         $result = $algorithm->add($vm, [$host1, $host2]);
-        $this->assertTrue($result);
+        self::assertTrue($result);
     }
 
     public function testAddReturnsFalseIfNoHosts()
     {
         $vm = $this->createMock(SpecificationAwareInterface::class);
         $algorithm = new BestFitAlgorithm();
-        $this->assertFalse($algorithm->add($vm, []));
+        self::assertFalse($algorithm->add($vm, []));
     }
 }

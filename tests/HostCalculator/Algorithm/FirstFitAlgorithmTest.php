@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Tests\HostCalculator\Algorithm;
 
 use App\HostCalculator\Host;
@@ -30,7 +32,7 @@ class FirstFitAlgorithmTest extends TestCase
 
         $algorithm = new FirstFitAlgorithm();
         $result = $algorithm->add($vm, [$host1, $host2]);
-        $this->assertTrue($result);
+        self::assertTrue($result);
     }
 
     public function testAddReturnsFalseIfNoHostAcceptsVm()
@@ -51,13 +53,13 @@ class FirstFitAlgorithmTest extends TestCase
 
         $algorithm = new FirstFitAlgorithm();
         $result = $algorithm->add($vm, [$host1, $host2]);
-        $this->assertFalse($result);
+        self::assertFalse($result);
     }
 
     public function testAddReturnsFalseIfNoHosts()
     {
         $vm = $this->createMock(SpecificationAwareInterface::class);
         $algorithm = new FirstFitAlgorithm();
-        $this->assertFalse($algorithm->add($vm, []));
+        self::assertFalse($algorithm->add($vm, []));
     }
 }
