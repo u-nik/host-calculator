@@ -19,7 +19,7 @@ class Calculator
     /**
      * Calculates the number of hosts required to run the given VMs.
      *
-     * @param \App\HostCalculator\Specification\SpecificationAwareHostInterface[] $vms
+     * @param \App\HostCalculator\Specification\SpecificationAwareInterface[] $vms
      * @return Result
      * @throws \App\HostCalculator\VMResourceException
      */

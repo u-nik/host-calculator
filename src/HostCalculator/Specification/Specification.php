@@ -43,6 +43,29 @@ class Specification
         );
     }
 
+    public function compareTo(Specification $specification): int
+    {
+        if ($this->cpuCores < $specification->cpuCores) {
+            return -1;
+        } elseif ($this->cpuCores > $specification->cpuCores) {
+            return 1;
+        }
+
+        if ($this->memory < $specification->memory) {
+            return -1;
+        } elseif ($this->memory > $specification->memory) {
+            return 1;
+        }
+
+        if ($this->bandwidth < $specification->bandwidth) {
+            return -1;
+        } elseif ($this->bandwidth > $specification->bandwidth) {
+            return 1;
+        }
+
+        return 0; // Specifications are equal
+    }
+
     /**
      * Checks if the current specification is exhausted.
      *

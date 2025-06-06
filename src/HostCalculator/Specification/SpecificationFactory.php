@@ -29,7 +29,7 @@ class SpecificationFactory
      * @param int $bandwidth The bandwidth in Mbps.
      * @return Specification
      */
-    public static function createWith($cpuCores, int $memory, int $bandwidth): Specification
+    public static function createWith(int $cpuCores, int $memory, int $bandwidth): Specification
     {
         return new Specification(
             cpuCores: $cpuCores,

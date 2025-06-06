@@ -4,12 +4,12 @@ declare(strict_types=1);
 namespace App\HostCalculator;
 
 use App\HostCalculator\Specification\Specification;
-use App\HostCalculator\Specification\SpecificationAwareHostInterface;
+use App\HostCalculator\Specification\SpecificationAwareInterface;
 
-class Host implements SpecificationAwareHostInterface
+class Host implements SpecificationAwareInterface
 {
     /**
-     * @var \App\HostCalculator\Specification\SpecificationAwareHostInterface[]
+     * @var \App\HostCalculator\Specification\SpecificationAwareInterface[]
      */
     protected array $vms = [];
 
@@ -34,11 +34,11 @@ class Host implements SpecificationAwareHostInterface
     /**
      * Adds a virtual machine to the host.
      *
-     * @param \App\HostCalculator\Specification\SpecificationAwareHostInterface $vm
+     * @param \App\HostCalculator\Specification\SpecificationAwareInterface $vm
      * @return bool Returns true if the VM was added successfully, false otherwise.
      * @throws \App\HostCalculator\VMResourceException
      */
-    public function addVM(SpecificationAwareHostInterface $vm): bool
+    public function addVM(SpecificationAwareInterface $vm): bool
     {
         if (!$vm->getSpecification()->fitsIn($this->specification)) {
             throw new VMResourceException('VM cannot be added to host due to resource constraints.');
@@ -63,7 +63,7 @@ class Host implements SpecificationAwareHostInterface
      */
     public function getVMIds(): array
     {
-        return array_map(fn(SpecificationAwareHostInterface $vm) => $vm->getId(), $this->vms);
+        return array_map(fn(SpecificationAwareInterface $vm) => $vm->getId(), $this->vms);
     }
 
     /**
@@ -74,6 +74,16 @@ class Host implements SpecificationAwareHostInterface
     public function getSpecification(): Specification
     {
         return $this->specification;
+    }
+
+    /**
+     * Returns the remaining resources of the host after adding VMs.
+     *
+     * @return \App\HostCalculator\Specification\Specification
+     */
+    public function getRemaining(): Specification
+    {
+        return $this->remaining;
     }
 
 

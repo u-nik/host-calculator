@@ -8,7 +8,7 @@ namespace App\HostCalculator\Specification;
  * This interface is used to ensure that the host has a specification
  * that can be used to check resource constraints.
  */
-interface SpecificationAwareHostInterface
+interface SpecificationAwareInterface
 {
    public function __construct(string $id, Specification $specification);
 

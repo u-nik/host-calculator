@@ -5,12 +5,12 @@ declare(strict_types=1);
 namespace App\HostCalculator;
 
 use App\HostCalculator\Specification\Specification;
-use App\HostCalculator\Specification\SpecificationAwareHostInterface;
+use App\HostCalculator\Specification\SpecificationAwareInterface;
 
 /**
  * Represents a virtual machine (VM) with its resources.
  */
-readonly class VM implements SpecificationAwareHostInterface
+readonly class VM implements SpecificationAwareInterface
 {
     /**
      * @param string $id The unique identifier for the VM.

@@ -2,11 +2,11 @@
 
 namespace App\HostCalculator\Algorithm;
 
-use App\HostCalculator\Specification\SpecificationAwareHostInterface;
+use App\HostCalculator\Specification\SpecificationAwareInterface;
 
 class FirstFitAlgorithm implements AlgorithmInterface
 {
-    public function add(SpecificationAwareHostInterface $vm, array &$hosts): bool
+    public function add(SpecificationAwareInterface $vm, array $hosts): bool
     {
         return array_any($hosts, fn($host) => $host->addVM($vm));
     }
